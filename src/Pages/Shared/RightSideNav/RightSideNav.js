@@ -7,6 +7,10 @@ import { FaGoogle , FaGithub, FaFacebook, FaWhatsapp, FaTwitter, FaDiscord} from
 import ListGroup from 'react-bootstrap/ListGroup';
 import Carousel from 'react-bootstrap/Carousel';
 
+import slide1 from '../../../components/assets/image/slide1.jpg';
+import slide2 from '../../../components/assets/image/slide2.jpg';
+import slide3 from '../../../components/assets/image/slide3.jpg';
+
 const RightSideNav = () => {
     return (
         <div>
@@ -36,7 +40,7 @@ const RightSideNav = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=First slide&bg=373940"
+          src={slide1}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -47,7 +51,7 @@ const RightSideNav = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
+          src={slide2}
           alt="Second slide"
         />
 
@@ -59,7 +63,7 @@ const RightSideNav = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          src={slide3}
           alt="Third slide"
         />
 
