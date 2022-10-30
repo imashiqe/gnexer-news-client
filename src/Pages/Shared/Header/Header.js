@@ -5,12 +5,19 @@ import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import {  FaUser } from 'react-icons/fa';
+import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import LeftSideNav from './LeftSideNav/LeftSideNav';
 const Header = () => {
-  const  {user} = useContext(AuthContext);
+  const  {user,logOut} = useContext(AuthContext);
+
+  const handleLogOut = () =>{
+    logOut()
+    .then(() => {})
+    .catch(error => console.error(error))
+  }
+
     return (
         <div>
             <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
@@ -34,24 +41,36 @@ const Header = () => {
             </NavDropdown>
           </Nav>
           <Nav>
-            <Link>
-            {user?.displayName}
-            </Link>
-
-           <Link>
-            {
-              user.photoURL ?
+           <Nav.Link href="#deets">
+            
+              {
+                user?.uid ? 
+                <>
+                       <span>{user?.displayName}</span>
+                       <button onClick={handleLogOut }>Logout</button>
+                </>
+          
+                :
+                <>
+                  <Link to='/login'>Login</Link>
+                  <Link to='/register'>Register</Link>
+                </>
+              }
+            
+            </Nav.Link>
+           <Nav.Link href="#">
+            {             
+              user?.photoURL ?
                <Image
-                style={{height: '30px'}}
+                style={{height: '40px'}}
                 roundedCircle
                 src={user.photoURL}
                ></Image>
                :
                <FaUser></FaUser>
-             }
-            </Link> 
-         
-          
+             } 
+              
+           </Nav.Link>
            
           </Nav>
 
