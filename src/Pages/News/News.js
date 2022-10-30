@@ -1,10 +1,11 @@
 import React from 'react';
 import { Link, useLoaderData } from 'react-router-dom';
 import Card from 'react-bootstrap/Card';
+import Button from 'react-bootstrap/Button';
 
 const News = () => {
     const news = useLoaderData();
-    const {title,details,author,published_date,name,image_url} = news;
+    const {title,details,author,published_date,name,image_url,category_id} = news;
     return (
         <div>
             <Card >
@@ -20,8 +21,16 @@ const News = () => {
         </Card.Text>
       </Card.Body>
           
-      <Card.Body>
-           <Link to='/'>Back to Home</Link>
+      <Card.Body className='d-flex  justify-content-between'>
+            <div>
+            <Link to='/'>Back to Home</Link>
+            </div>
+
+            <div>
+                <Link to={`/category/${category_id}`}><button>View All</button></Link>
+              
+            </div>
+          
       </Card.Body>
     </Card>
         </div>
