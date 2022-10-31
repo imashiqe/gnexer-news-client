@@ -1,4 +1,5 @@
 import React from 'react';
+import { useState } from 'react';
 import { useContext } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
@@ -8,9 +9,8 @@ import { AuthContext } from '../../context/AuthProvider';
 
 
 const Login = () => {
-    
+    const [error, setError] = useState('');
     const {signIn} = useContext(AuthContext);
-   
     const navigate = useNavigate();
 
    const handleSubmit  = event => {
@@ -18,15 +18,20 @@ const Login = () => {
      const form = event.target;
      const email = form.email.value;
      const password = form.password.value;
+
      signIn(email, password)
      .then(result => {
        const user = result.user;
-       console.log(user)
+       console.log(user);
        form.reset();
+       setError('');
        navigate('/')
      })
 
-     .catch(error => console.error(error))
+     .catch(error => {
+      console.error(error)
+       setError(error.message);
+     } )
    }
      
     return (
@@ -44,12 +49,12 @@ const Login = () => {
       </Form.Group>
       <Form.Group className="mb-3" controlId="formBasicCheckbox">
       <Form.Text className="text-danger">
-          We'll never share your email with anyone else.
+         {error}
         </Form.Text>
         <Form.Check type="checkbox" label="Check me out" />
       </Form.Group>
       
-      <Button variant="primary" name='submit' type="submit">
+      <Button variant="primary"  type="submit">
         Submit
       </Button>
     </Form>
@@ -57,4 +62,4 @@ const Login = () => {
     );
 };
 
-export default Login;
+export default Login; 
