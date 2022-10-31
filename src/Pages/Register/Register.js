@@ -2,11 +2,13 @@ import React, { useContext } from 'react';
 import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import { Link } from 'react-router-dom';
 import { AuthContext } from '../../context/AuthProvider';
 
 const Register = () => {
-    const [error, setError] = useState('')
-   const {createUser} = useContext(AuthContext);
+    const [error, setError] = useState('');
+    const [accepted, setAccepted] = useState(false);
+   const {createUser, updateUserProfile} = useContext(AuthContext);
 
    const handleSubmit = event => {
      event.preventDefault();
@@ -15,7 +17,7 @@ const Register = () => {
      const photoURL = form.photoURL.value;
      const email = form.email.value;
      const password = form.password.value;
-     console.log(name, photoURL, email, password);
+    //  console.log(name, photoURL, email, password);
 
      createUser(email,password)
      .then(result => {
@@ -23,12 +25,27 @@ const Register = () => {
       console.log(user);
       setError('');
       form.reset();
+      handleUpdateUserProfile(name, photoURL);
      })
      .catch(e => {
       console.error(e);
       setError(e.message);
      });
  
+   }
+   
+   const handleUpdateUserProfile = (name, photoURL) => {
+      const profile = {
+         displayName: name,
+         photoURL: photoURL
+      }
+      updateUserProfile(profile)
+      .then(() => {})
+      .catch(error => console.error(error));
+   }
+
+   const handleAccepted =   event => {
+     setAccepted(event.target.checked)
    }
 
     return (
@@ -58,11 +75,15 @@ const Register = () => {
       <Form.Text className="text-danger">
           {error}
         </Form.Text>
-        <Form.Check type="checkbox" label="Check me out" />
+        <Form.Check 
+        type="checkbox" 
+        onClick={handleAccepted}
+        label={<>Accept <Link to="/terms"> Terms and  Conditions</Link></>} />
       </Form.Group>
       
-      <Button variant="primary" type="submit">
-        Submit
+      <Button variant="primary" type="submit" 
+      disabled={!accepted}>
+        Register
       </Button>
     </Form>
         </div>
