@@ -9,6 +9,7 @@ import { FaUser } from 'react-icons/fa';
 import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import LeftSideNav from './LeftSideNav/LeftSideNav';
+import Button from 'react-bootstrap/Button';
 const Header = () => {
   const  {user,logOut} = useContext(AuthContext);
 
@@ -47,7 +48,8 @@ const Header = () => {
                 user?.uid ? 
                 <>
                        <span>{user?.displayName}</span>
-                       <button onClick={handleLogOut }>Logout</button>
+
+                       <Button className="px-2" variant="outline-danger" onClick={handleLogOut }>LogOut</Button>
                 </>
           
                 :
