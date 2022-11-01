@@ -11,7 +11,7 @@ import { AuthContext } from '../../context/AuthProvider';
 
 const Login = () => {
     const [error, setError] = useState('');
-    const {signIn} = useContext(AuthContext);
+    const {signIn ,setLoading} = useContext(AuthContext);
     const navigate = useNavigate();
     const location = useLocation();
 
@@ -41,6 +41,10 @@ const Login = () => {
       console.error(error)
        setError(error.message);
      } )
+
+     .finally(() => {
+       setLoading(false);
+     })
    }
      
     return (
@@ -60,7 +64,7 @@ const Login = () => {
       <Form.Text className="text-danger">
          {error}
         </Form.Text>
-        <Form.Check type="checkbox" label="Check me out" />
+    
       </Form.Group>
       
       <Button variant="primary"  type="submit">

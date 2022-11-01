@@ -20,7 +20,9 @@ import { useEffect } from 'react';
      useEffect( () =>{
     const unsubscribe =   onAuthStateChanged(auth, (currentUser) => {
         console.log('User Inside State Change', currentUser);
-        setUser(currentUser);
+        if(currentUser ===  null || currentUser.emailVerified){
+            setUser(currentUser);
+        }
         setLoading(false);
     });
 
