@@ -1,6 +1,15 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Gnexer News
+
+Used  Technology 
+1. React , 
+2.React Router ,
+3.Toast , 
+4. Firebase
+5. Express Server
+
+Author : imashiqe
+
 
 ## Available Scripts
 
