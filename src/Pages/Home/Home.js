@@ -5,10 +5,11 @@ import Carousel from 'react-bootstrap/Carousel';
 import banner01 from  '../../components/assets/image/slide01.jpg'
 import banner02 from  '../../components/assets/image/slide02.jpg'
 import banner03 from  '../../components/assets/image/slide03.jpg'
+import useTitle from '../../hooks/useTitle';
 
 const Home = () => {
     const allnews = useLoaderData();
-
+   useTitle('Home')
     return (
         <div>
              <div>
