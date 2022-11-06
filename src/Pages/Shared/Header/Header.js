@@ -10,6 +10,7 @@ import { Link } from 'react-router-dom';
 import { AuthContext } from '../../../context/AuthProvider';
 import LeftSideNav from './LeftSideNav/LeftSideNav';
 import Button from 'react-bootstrap/Button';
+import './Header.css';
 const Header = () => {
   const  {user,logOut} = useContext(AuthContext);
 
@@ -20,8 +21,8 @@ const Header = () => {
   }
 
     return (
-        <div>
-            <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light">
+        <div className='menu-bn'>
+            <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light" >
       <Container>
         <Navbar.Brand ><Link to='/'>Gnexer News</Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
