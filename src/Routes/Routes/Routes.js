@@ -1,6 +1,7 @@
 import { createBrowserRouter } from "react-router-dom";
 import Main from "../../layout/Main";
 import Category from "../../Pages/Category/Category/Category";
+import Error404 from "../../Pages/Error404/Error404";
 import Home from "../../Pages/Home/Home";
 import Login from "../../Pages/Login/Login";
 import News from "../../Pages/News/News";
@@ -22,7 +23,7 @@ export const routes = createBrowserRouter([
              {
                 path: '/category/:id',
                 element: <Category></Category>,
-                loader: ({params}) => fetch(`https://gnexer-news-server.vercel.app/news-categories/${params.id}`)
+                loader: ({params}) => fetch(`https://gnexer-news-server.vercel.app/category/${params.id}`)
 
              },
              {
@@ -53,5 +54,9 @@ export const routes = createBrowserRouter([
              }
            
         ]
+      },
+      {
+         path: '*',
+         element:<Error404></Error404>
       }
 ]);
