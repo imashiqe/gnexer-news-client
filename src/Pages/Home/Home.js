@@ -2,6 +2,9 @@ import React from 'react';
 import { useLoaderData } from 'react-router-dom';
 import NewsSummaryCard from '../Shared/NewsSummaryCard/NewsSummaryCard';
 import Carousel from 'react-bootstrap/Carousel';
+import banner01 from  '../../components/assets/image/slide01.jpg'
+import banner02 from  '../../components/assets/image/slide02.jpg'
+import banner03 from  '../../components/assets/image/slide03.jpg'
 
 const Home = () => {
     const allnews = useLoaderData();
@@ -13,7 +16,7 @@ const Home = () => {
       <Carousel.Item interval={1000}>
         <img
           className="d-block w-100"
-          src="https://www.google.com/url?sa=i&url=https%3A%2F%2Ftwitter.com%2Fiaeaorg%2Fstatus%2F1539910061899689984&psig=AOvVaw3bNmLIgaawcCTwGS3FNqBd&ust=1667228273783000&source=images&cd=vfe&ved=0CAoQjRxqFwoTCOjq-76biPsCFQAAAAAdAAAAABAJ"
+          src={banner01}
           alt="First slide"
         />
         <Carousel.Caption>
@@ -24,7 +27,7 @@ const Home = () => {
       <Carousel.Item interval={500}>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Second slide&bg=282c34"
+          src={banner02}
           alt="Second slide"
         />
         <Carousel.Caption>
@@ -35,7 +38,7 @@ const Home = () => {
       <Carousel.Item>
         <img
           className="d-block w-100"
-          src="holder.js/800x400?text=Third slide&bg=20232a"
+          src={banner03}
           alt="Third slide"
         />
         <Carousel.Caption>

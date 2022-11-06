@@ -1,12 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
-import Category from '../../../Category/Category/Category';
 
 const LeftSideNav = () => {
     const [categories, setCategories] = useState([]);
 
     useEffect ( () =>{
-        fetch('http://localhost:5000/news-categories')
+        fetch('https://gnexer-news-server.vercel.app/news-categories')
         .then(res => res.json())
         .then(data => setCategories(data));
     }, [])
