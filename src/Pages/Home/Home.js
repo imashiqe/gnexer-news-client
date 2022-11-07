@@ -51,6 +51,9 @@ const Home = () => {
       </Carousel.Item>
     </Carousel>
              </div>
+             <div className='bg-primary text-white d-flex'>
+              <span className='bg-dark'>Latest</span> <marquee>Biden Pledges Nearly $3 Billion To Ukraine In Largest U.S. Military Aid Package Yet</marquee>
+             </div>
             <h2>Gnexer News : {allnews.length}</h2>
             {
               allnews.map(news => <NewsSummaryCard 
