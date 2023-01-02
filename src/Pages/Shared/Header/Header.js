@@ -11,6 +11,7 @@ import { AuthContext } from '../../../context/AuthProvider';
 import LeftSideNav from './LeftSideNav/LeftSideNav';
 import Button from 'react-bootstrap/Button';
 import './Header.css';
+import logo from '../../../components/assets/image/gnexertt5rt.png';
 const Header = () => {
   const  {user,logOut} = useContext(AuthContext);
 
@@ -24,7 +25,7 @@ const Header = () => {
         <div className='menu-bn'>
             <Navbar collapseOnSelect className='mb-4' expand="lg" bg="light" variant="light" >
       <Container>
-        <Navbar.Brand ><Link to='/'>Gnexer News</Link></Navbar.Brand>
+        <Navbar.Brand ><Link to='/'><img className='logo' src={logo}  /></Link></Navbar.Brand>
         <Navbar.Toggle aria-controls="responsive-navbar-nav" />
         <Navbar.Collapse id="responsive-navbar-nav">
           <Nav className="me-auto">
